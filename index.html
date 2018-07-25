@@ -1,0 +1,198 @@
+<!DOCTYPE HTML>
+<!--
+ Stellar by HTML5 UP
+ html5up.net | @ajlkn
+ Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+ -->
+<html>
+    <head>
+        <title>An Exploration of Exoplanet Discoveries</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+        <script src="http://d3js.org/d3.v3.js" charset="utf-8"></script>
+        <style>
+            .axis line{
+                fill: none;
+                stroke: black;
+                opacity: 0.2;
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+        <script src="assets/js/data_planets_lite.js"></script>
+        <script src="assets/js/data_habitable_zone.js"></script>
+        <script src="assets/js/preproc_data.js"></script>
+        <script src="assets/js/comp_time.js"></script>
+        <script src="assets/js/comp_life.js"></script>
+        
+        <!-- Wrapper -->
+        <div id="wrapper">
+            
+            <!-- Header -->
+            <header id="header" class="alt">
+                <span class="logo"><img src="images/logo.svg" alt="" /></span>
+                <h1>UIUC CS 498: Data Visualization</h1>
+                <h2>Final Project: An Exploration of Exoplanet Discoveries</h2>
+                <h3>by Thai Duy Cuong Nguyen (thaidn2@illinois.edu)</h3>
+                <footer class="major">
+                    <ul class="actions special">
+                        <li><a href="#about" class="button scrolly">About the Visualization</a></li>
+                    </ul>
+                </footer>
+            </header>
+            
+            <!-- Nav -->
+            <nav id="nav">
+                <ul>
+                    <li><a href="#about" class="active">About the Visualization</a></li>
+                    <li><a href="#time">Time</a></li>
+                    <li><a href="#space">Space</a></li>
+                    <li><a href="#life">Life</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Main -->
+            <div id="main">
+                
+                <!-- About the Visualization -->
+                <section id="about" class="main">
+                    <div class="spotlight">
+                        <div class="content">
+                            <header class="major">
+                                <h2>About the Visualization</h2>
+                            </header>
+                            <p>The narrative visualization for this project follows an interactive slideshow structure. The project uses data from the <a href="https://exoplanetarchive.ipac.caltech.edu/">NASA Exoplanet Archive</a>, specifically the <a href="https://exoplanetarchive.ipac.caltech.edu/cgi-bin/TblView/nph-tblView?app=ExoTbls&config=planets">Confirmed Planets Table</a>.</p>
+                            <p>The rubric for this project is as follows:</p>
+                            <li><b>Does the narrative visualization correctly follow the hybrid structure as stated by the essay?</b></li>
+                            This visualization follows the interactive slideshow structure, and consists of three scenes. Each scene allows the user to interactively manipulate the visualization to gain a better understanding of the data being displayed. The user interacts with display using buttons, tooltips and sliders. Furthermore, annotations appear in the visualization to aid the user.
+                            <li><b>Does the narrative visualization effectively utilize scenes?</b></li>
+                            This narrative partitions the topic of exoplanet discovery into three scenes. First, the user is introduced to an overview of the discovery of exoplanets through time. Next, the user is shown the exoplanet discoveries as they were found in the sky. Finally, physical parameters related to exoplanets are illustrated to the user.
+                            <li><b>Does the narrative visualization effectively utilize annotations?</b></li>
+                            This narrative visualization contains annotations in every scenes. Every scene has tooltips to aid and provide additional information to the user. Additional information is also displayed with text boxes at appropriate times as the user manipulates the visualization.
+                            <li><b>Does the narrative visualization effectively utilize parameters?</b></li>
+                            This visualization shows the user the current state of each scene as its manipulated. In every scene, buttons are highlighted to indicate that they are activated. Numerical values associated with sliders are dynamically updated.
+                            <li><b>Does the narrative visualization effectively utilize triggers?</b></li>
+                            This visualization uses buttons, sliders, and mouse-over tooltips as triggers to control the narrative. In the first scene (Time), buttons are used to alter axes, and buttons available in every scene to toggle annotations. In the second and third scene (Space and Life), sliders are used to filter the data that is displayed. Finally, in every scene, there are tooltips that are activated by mouse-overs.
+                            <footer class="major">
+                                <ul class="actions special">
+                                    <li><a href="#time" class="button scrolly">Continue</a></li>
+                                </ul>
+                            </footer>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- First Section -->
+                <section id="time" class="main special">
+                    <header class="major">
+                        <h2>Time</h2>
+                    </header>
+                    <div class="content">
+                        The earliest announced exoplanet discovery that was later confirmed was that of Gamma Cephei in 1989. This discovery was made using the radial velocity method. This method uses periodic variations in the velocity of a star toward and away from us to indicate the presence of an exoplanet orbiting that star. Exoplanet detection using radial velocities was the most popular technique until 2010 when it was overtaken by the transit search method. Currently, more exoplanets have been discovered using transit searches than any other method to date. In particular, the transit search of the Kepler space observatory has discovered more confirmed exoplanets than all other efforts combined thus far.
+                    </div>
+                    <div id="timeContainer">
+                        <div id="timeButtons"></div>
+                    </div>
+                    <div id="timeAnnotationsContainer">
+                        <div id="timeAnnotationsButtons"></div>
+                    </div>
+                    <script src="assets/js/disp_time.js"></script>
+                    <footer class="major">
+                        <ul class="actions special">
+                            <li><a href="#space" class="button scrolly">Continue</a></li>
+                        </ul>
+                    </footer>
+                </section>
+                
+                <!-- Second Section -->
+                <section id="space" class="main special">
+                    <header class="major">
+                        <h2>Space</h2>
+                    </header>
+                    <div class="content">
+                        Exoplanets have been discovered all over the sky. However, most of the confirmed exoplanets are localized to a small region of the sky around the Kepler field. This field is named after the Kepler space observatory which concentrated its exoplanet search in that angular region exclusively.
+                    </div>
+                    <div id="spaceContainer">
+                    </div>
+                    <div id="spaceSliderContainer">
+                        <div id="spaceSliderSelected">Showing exoplanet discoveries from 1989 through 2018</div>
+                        1989<input id="spaceSlider" type="range" min="1989" max="2018" step="1" value="2018" style="background-color: lightblue; width:720px;"/>2018
+                    </div>
+                    <div id="spaceAnnotationsContainer">
+                        <div id="spaceAnnotationsButtons"></div>
+                    </div>
+                    <script src="assets/js/disp_space.js"></script>
+                    <footer class="major">
+                        <ul class="actions special">
+                            <li><a href="#life" class="button scrolly">Continue</a></li>
+                        </ul>
+                    </footer>
+                </section>
+                
+                <!-- Get Started -->
+                <section id="life" class="main special">
+                    <header class="major">
+                        <h2>Life</h2>
+                    </header>
+                    <div class="content">
+                        One of the most profound questions that humankind has sought to answer is whether we are alone in the Universe. The underlying goal of exoplanet programs is to discover habitable planets, i.e., planets that are similar to Earth and can support life as we know it. These habitable planets cannot neither be too close to nor too far from their host star, and are thought to have orbits with semi-major axes that would allow for liquid water to exist on or near its surface. The inner and outer radius of the habitable zone are indicated in the plot below by the dotted and dashed lines, respectively. Furthermore, even within this narrow band of habitable distance from a star, habitable planets are thought to be mostly solid and not gas giants, therefore, they cannot be too massive. Only a handful of the thousands of confirmed exoplanets are within the habitable zone and have masses similar to Earth.
+                    </div>
+                    <div id="lifeContainer">
+                        <div id="lifeButtons"></div>
+                    </div>
+                    <div id="lifeSliderContainer">
+                        <div id="lifeSliderSelected">Showing exoplanets up to 10000.00 Earth masses</div>
+                        1<input id="lifeSlider" type="range" min="0" max="4000" value="4000" style="background-color: lightblue; width:720px;"/>10000
+                    </div>
+                    <div id="lifeAnnotationsContainer">
+                        <div id="lifeAnnotationsButtons"></div>
+                    </div>
+                    <script src="assets/js/disp_life.js"></script>
+                    <footer class="major">
+                        <ul class="actions special">
+                            <li><a href="https://exoplanetarchive.ipac.caltech.edu/" class="button">Learn More</a></li>
+                        </ul>
+                    </footer>
+                </section>
+                
+            </div>
+            
+            <!-- Footer -->
+            <footer id="footer">
+                <section>
+                    <h2>Further Information</h2>
+                    <p>This narrative visualization was built for CS 498: Data Visualization course from the Department of Computer Science at the University of Illinois at Urbana-Champaign.</p>
+                    <ul class="actions">
+                        <li><a href="https://cs.illinois.edu/courses/profile/CS498" class="button">Learn More</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Contact Information</h2>
+                    <dl class="alt">
+                        <dt>Address</dt>
+                        <dd>Department of Computer Science</dd>
+                        <dd>Thomas M. Siebel Center for Computer Science<br>201 North Goodwin Avenue<br>Urbana, IL 61801-2302<br>USA</dd>
+                        <dt>Phone</dt>
+                        <dd>+1-217-333-3426</dd>
+                        <dt>Email</dt>
+                        <dd><a href="#">thaidn2@illinois.edu</a></dd>
+                    </dl>
+                </section>
+                <p class="copyright">&copy; 2018 Thai Duy Cuong Nguyen. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+            
+        </div>
+        
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+        
+    </body>
+</html>
